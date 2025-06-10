@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .comp1 {
+            width: 100%;
+            height: 50vh;
+            background-color: rgb(248, 255, 205);
+        }
+        .comp2 {
+            width: 100%;
+            height: 30vh;
+            background-color: rgb(175, 216, 191);
+        }
+        .comp3 {
+            width: 100%;
+            height: 30vh;
+            background-color: rgb(153, 160, 201);
+        }
+        .comp4 {
+            width: 100%;
+            height: 20vh;
+            background-color: rgb(215, 201, 233);
+        }
+    </style>
+
+    <!-- 리액트홈페이지에서 배포용 코드 긁어온 것 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- 위의 두개가 리액트 기능을 담당하는거고 이 아래 스크립트 한줄이 번역해주는거 -->
+    <script src="http://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const App = () => {
+            const [status, setStatus] = React.useState(false);
+            const change = () => setStatus(!status);
+            return (
+                <>
+                    <h1>컴포넌트</h1>
+                    <h2>{status}</h2>
+                    <button onClick={change}>{status + '입니다'}</button>
+                    <hr />
+                    {status ? <Component1 /> : <Component2 />}
+                    {status ? <Component3 /> : <Component4 />}
+                </>
+            );
+        };
+        const Component1 = () => <div className="comp1">기본 컴포넌트1</div>
+        const Component2 = () => <div className="comp2">기본 컴포넌트2</div>
+        const Component3 = () => <div className="comp3">기본 컴포넌트3</div>
+        const Component4 = () => <div className="comp4">기본 컴포넌트4</div>
+        
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+</html>
